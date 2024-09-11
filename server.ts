@@ -25,7 +25,7 @@ app.post('/', async (request, response) => {
   const { userid, wish, address } = request.body;
 
   addMailToCache({ username: userid, wish, address });
-  response.json({ redirect: 'http://localhost:3000/success' });
+  response.json({ redirect: '/success' });
 });
 
 app.get('/', (request, response) => {

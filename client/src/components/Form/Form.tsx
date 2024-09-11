@@ -23,14 +23,14 @@ export default function Form({ onAppState }: { onAppState: Function }) {
       const validation = await validateUser(userName);
 
       if (validation.status === statuses.SUCCESS) {
-        axios.post('http://localhost:3000', {
+        axios.post(`${window.location.origin}`, {
           userid: userName,
           wish: wishContent,
           address: validation.address
         })
         .then(function (response) {
           if (response.data.redirect) {
-            window.location = response.data.redirect;
+            window.location.href = `${window.location.origin}${response.data.redirect}`;
           }
         })
         .catch(function (error) {
